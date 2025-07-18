@@ -3,11 +3,14 @@ import numpy as np
 import random
 
 # Paramètres de la population et sélection
-population_total = 3523
-selection_count = 12
-rang_moyen = 2226
-rang_median = 2237
+concours = "Banque-epreuves-CCINP"
+name = "ENSISA Mulhouse Textile et Fibres"
+population_total = 64
+selection_count = 7
+rang_median = 60
+rang_moyen = 50
 depth = 100
+
 
 def generer_rangs_realistes(moyenne, mediane, n, rang_min=1, rang_max=3523):
     decalage = moyenne - mediane
@@ -39,18 +42,22 @@ for i in range(selection_count):
 # Visualisation
 fig, ax = plt.subplots(figsize=(10, 2))
 
-ax.hlines(y=1, xmin=selection_rangs[0]-100, xmax=selection_rangs[-1]+100, color='lightgray', linewidth=4)
+#ax.hlines(y=1, xmin=selection_rangs[0]-100, xmax=selection_rangs[-1]+100, color='lightgray', linewidth=4)
+ax.hlines(y=1, xmin=1, xmax=population_total, color='lightgray', linewidth=4)
 ax.plot(selection_rangs, [1]*selection_count, 'o', color='blue', label='Rangs sélectionnés')
 ax.axvline(x=rang_moyen, color='orange', linestyle='--', label=f'Moyenne ({rang_moyen})')
 ax.axvline(x=rang_median, color='green', linestyle='--', label=f'Médiane ({rang_median})')
 
 ax.set_yticks([])
-ax.set_xlim(selection_rangs[0]-100, selection_rangs[-1]+100)
+#ax.set_xlim(selection_rangs[0]-100, selection_rangs[-1]+100)
+ax.set_xlim(1, population_total)
 ax.set_xlabel("Rang")
-ax.set_title("Répartition simulée autour de la moyenne et médiane")
-ax.legend(loc='upper right')
+ax.set_title("Répartition")
+ax.legend(loc='upper left')
 plt.tight_layout()
-plt.show()
+#plt.show()
 
 # Afficher les rangs générés
-print("Rangs générés :", selection_rangs)
+#print("Rangs générés :", selection_rangs)
+
+plt.savefig(rf"C:\Users\gouba\Documents\GitHub\ecole\Graphics\{concours}\{name}")
