@@ -13,6 +13,13 @@ th {
     padding: 4px;
 }
 
+div.container_liste {
+  text-align: center;
+}
+
 ol {
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: left;
 }
